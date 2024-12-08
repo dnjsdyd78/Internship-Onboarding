@@ -1,6 +1,5 @@
 package com.example.Internship.common.config;
 
-import com.example.Internship.domain.user.enums.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,7 +40,7 @@ public class SecurityConfig {
                 .logout(AbstractHttpConfigurer::disable) // LogoutFilter 비활성화
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/signin", "/signup").permitAll()
-                        .requestMatchers("/test/*").permitAll()
+//                        .requestMatchers("/test/*").permitAll()
                         .anyRequest().authenticated()
                 )
                 .build();

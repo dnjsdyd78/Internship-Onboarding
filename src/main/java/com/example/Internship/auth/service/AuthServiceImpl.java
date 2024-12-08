@@ -47,7 +47,7 @@ public class AuthServiceImpl implements AuthService {
         );
 
         User savedUser = userRepository.save(newUser);
-        return new SignupResponse(savedUser.getUsername(),savedUser.getNickname(),savedUser.getRole());
+        return new SignupResponse(savedUser.getUsername(), savedUser.getNickname(), savedUser.getRole());
     }
 
     /**

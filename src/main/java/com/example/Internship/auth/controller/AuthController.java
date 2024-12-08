@@ -6,11 +6,8 @@ import com.example.Internship.auth.dto.response.SigninResponse;
 import com.example.Internship.auth.dto.response.SignupResponse;
 import com.example.Internship.auth.service.AuthService;
 import com.example.Internship.domain.apipayload.dto.ApiResponse;
-import com.example.Internship.domain.apipayload.status.SuccessStatus;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,8 +44,6 @@ public class AuthController {
     public ApiResponse<SigninResponse> signin(@Valid @RequestBody SigninRequest signinRequest) {
 
         String token = authService.signin(signinRequest);
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", token);
         SigninResponse response = new SigninResponse(token);
 
         return ApiResponse.onSuccess(response);
