@@ -1,7 +1,7 @@
 FROM openjdk:17-jdk-slim
 
 # 애플리케이션 JAR 파일 복사
-COPY build/libs/Project509-0.0.1-SNAPSHOT.jar app.jar
+COPY build/libs/Spring-Security-0.0.1-SNAPSHOT.jar app.jar
 
 # wait-for-it.sh 스크립트를 컨테이너로 복사
 COPY wait-for-it.sh /wait-for-it.sh
