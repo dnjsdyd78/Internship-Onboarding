@@ -13,9 +13,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String UserName;
-    private String Password;
-    private String Nickname;
+    private String username;
+    private String password;
+    private String nickname;
     private UserRole role;
+
+    public User(String username, String encodedPassword, String nickname, UserRole userRole) {
+        this.username = username;
+        this.password = encodedPassword;
+        this.nickname = nickname;
+        this.role = userRole;
+    }
+
+    public User(Long userId, String nickname, UserRole role) {
+        this.id = userId;
+        this.nickname = nickname;
+        this.role = role;
+    }
 
 }

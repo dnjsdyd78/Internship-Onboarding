@@ -9,7 +9,10 @@ import org.springframework.http.HttpStatus;
 @Getter
 @AllArgsConstructor
 public enum ErrorStatus implements BaseCode {
-    _TEST(HttpStatus.BAD_REQUEST, "400", "테스트 오류 발생");
+
+    // auth
+    _EXIST_NICKNAME(HttpStatus.BAD_REQUEST, "400", "이미 존재하는 닉네임 입니다."),
+    _SIGN_IN_ERROR(HttpStatus.BAD_REQUEST,  "400","로그인에 실패했습니다.");
 
     private final HttpStatus httpStatus;
     private final String statusCode;
