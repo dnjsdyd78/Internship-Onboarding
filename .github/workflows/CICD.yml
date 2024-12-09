@@ -78,6 +78,12 @@ jobs:
             # EC2 내에서 Docker 로그인
             echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
             
+            # 태그 없는 도커이미지 삭제
+            docker rmi $(docker images -f "dangling=true" -q)
+            
+            # 정지된 컨테이너 삭제
+            docker container prune 
+            
             # 기존 도거 정지 및 삭제
             docker stop app || true
             docker rm app || true
@@ -92,6 +98,3 @@ jobs:
             -e DB_USER=${{ secrets.DB_USER }} \
             -e JWT_KEY=${{ secrets.JWT_KEY }} \
             ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}
-            
-            # 태그 없는 도커이미지 삭제
-            docker rmi $(docker images -f "dangling=true" -q)
