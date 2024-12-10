@@ -39,8 +39,8 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable) // BasicAuthenticationFilter 비활성화
                 .logout(AbstractHttpConfigurer::disable) // LogoutFilter 비활성화
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/signin", "/signup").permitAll()
-//                        .requestMatchers("/test/*").permitAll()
+                        .requestMatchers("/auth/signin", "/auth/signup").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**").permitAll() // 스웨거경로 허용
                         .anyRequest().authenticated()
                 )
                 .build();

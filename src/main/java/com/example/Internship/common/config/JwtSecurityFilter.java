@@ -33,6 +33,11 @@ public class JwtSecurityFilter extends OncePerRequestFilter {
             @NonNull HttpServletResponse httpResponse,
             @NonNull FilterChain chain
     ) throws ServletException, IOException {
+        if (httpRequest.getRequestURI().startsWith("/swagger-ui") || httpRequest.getRequestURI().startsWith("/v3/api-docs")) {
+            chain.doFilter(httpRequest, httpResponse);
+            return;
+        }
+
         String authorizationHeader = httpRequest.getHeader("Authorization");
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {

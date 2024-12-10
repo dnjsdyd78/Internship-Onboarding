@@ -1,3 +1,8 @@
+
+> ### API 요청/응답 예시 링크
+
+* https://documenter.getpostman.com/view/36622749/2sAYBd991R#intro
+
 > ### Filter란?
 
 - 클라이언트 요청과 응답에 대해 부가작업을 처리할 수 있는 영역으로 Dispatcher Servlet에 요청이 전달되기 전후로 추가작업이 진행되기 때문에 스프링 외부에서 서블릿 컨테이너에 의해 관리가 되는 웹컴포넌트이다
@@ -29,3 +34,4 @@
     - **목표**: 만료된 Access Token으로 보호된 API에 접근할 때 적절한 오류가 발생하는지 확인
     - **요청**: 만료된 Access Token을 `Authorization` 헤더에 포함시켜 보호된 API 접근
     - **검증**: `401 Unauthorized` 오류가 반환되며, "Token expired"와 같은 오류 메시지가 제공되는지 확인
+
