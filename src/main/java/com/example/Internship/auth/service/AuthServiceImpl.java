@@ -33,7 +33,7 @@ public class AuthServiceImpl implements AuthService {
 
         // 사용자 아이디 중복 검증
         if (userRepository.existsByNickname(signupRequest.getNickname())) {
-            throw new ApiException(ErrorStatus._EXIST_NICKNAME);
+            throw new ApiException(ErrorStatus._EXIST_USERNAME);
         }
 
         // 닉네임 중복 검증
