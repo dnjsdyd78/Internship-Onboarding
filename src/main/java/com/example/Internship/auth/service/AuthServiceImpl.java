@@ -31,6 +31,11 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public SignupResponse signup(SignupRequest signupRequest) {
 
+        // 사용자 아이디 중복 검증
+        if (userRepository.existsByNickname(signupRequest.getNickname())) {
+            throw new ApiException(ErrorStatus._EXIST_NICKNAME);
+        }
+
         // 닉네임 중복 검증
         if (userRepository.existsByNickname(signupRequest.getNickname())) {
             throw new ApiException(ErrorStatus._EXIST_NICKNAME);
